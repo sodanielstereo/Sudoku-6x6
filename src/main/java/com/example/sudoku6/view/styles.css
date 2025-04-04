@@ -1,0 +1,47 @@
+.root {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 20;
+}
+
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.sudoku-grid {
+    -fx-background-color: white;
+    -fx-border-color: #333333;
+    -fx-border-width: 2px;
+}
+
+.control-button {
+    -fx-background-color: #4a90e2;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-background-radius: 5;
+}
+
+.control-button:hover {
+    -fx-background-color: #3a7bc8;
+}
+
+.cell {
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+.cell:focused {
+    -fx-border-color: #4a90e2;
+    -fx-border-width: 2px;
+}
+
+.cell-error {
+    -fx-border-color: #ff0000;
+    -fx-border-width: 2px;
+}
+
+.cell-hint {
+    -fx-background-color: #e6ffe6;
+}
