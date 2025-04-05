@@ -1,7 +1,6 @@
 package com.example.sudoku6.controller;
 
 import com.example.sudoku6.model.Model;
-import com.example.sudoku6.view.Cell;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

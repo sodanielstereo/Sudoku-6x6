@@ -6,48 +6,27 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 
-public class View {
-    public View(Stage primaryStage) {
-        try {
-            // Try multiple ways to locate the FXML file
-            URL fxmlUrl = getClass().getResource("/com/example/sudoku6/view/sudoku-view.fxml");
+public class View extends Stage{
 
-            if (fxmlUrl == null) {
-                // Alternative path for debugging
-                fxmlUrl = getClass().getClassLoader().getResource("com/example/sudoku6/view/sudoku-view.fxml");
-            }
-
-            if (fxmlUrl == null) {
-                throw new IOException("Cannot find FXML file. Tried:\n" +
-                        "1. /com/example/sudoku6/view/sudoku-view.fxml\n" +
-                        "2. com/example/sudoku6/view/sudoku-view.fxml (via classloader)");
-            }
-
-            System.out.println("Loading FXML from: " + fxmlUrl); // Debug output
-
-            FXMLLoader loader = new FXMLLoader(fxmlUrl);
-            Parent root = loader.load();
-
-            // Load CSS
-            URL cssUrl = getClass().getResource("/com/example/sudoku6/view/styles.css");
-            if (cssUrl == null) {
-                System.out.println("Warning: CSS file not found");
-            }
-
-            Scene scene = new Scene(root);
-            if (cssUrl != null) {
-                scene.getStylesheets().add(cssUrl.toExternalForm());
-            }
-
-            primaryStage.setScene(scene);
-            primaryStage.show();
-
-        } catch (IOException e) {
-            System.err.println("Fatal error loading FXML:");
-            e.printStackTrace();
-            System.exit(1);
+    public View() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource
+                ("/com/example/sudoku6/sudoku-view.fxml"));
+        Parent root = loader.load();
+        this.setTitle("Sudoku 6");
+        Scene scene = new Scene(root);
+        this.setScene(scene);
+        this.setResizable(false);
+        this.show();
+    }
+    private static class SudokuView {
+        private static View instance;
+    }
+    public static View getInstance() throws IOException {
+        if (SudokuView.instance == null) {
+            return SudokuView.instance = new View();
+        }else{
+            return SudokuView.instance;
         }
     }
 }
